@@ -6,6 +6,7 @@ npm install
 ```
 
 ### Compiles and hot-reloads address component for development
+Check `src/components/FormAddress.vue` for the component implementation.
 ```
 npm run serve:component
 ```
@@ -16,6 +17,7 @@ npm run build-bundle
 ```
 
 ### Run your unit tests
+Check `tests/unit/*.spec.js` for the testing codes.
 ```
 npm run test:unit
 ```
