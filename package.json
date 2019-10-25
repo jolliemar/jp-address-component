@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "serve:component" : "vue serve ./src/components/FormAddress.vue",
+    "serve:component": "vue serve ./src/components/FormAddress.vue",
     "build": "vue-cli-service build",
     "build-bundle": "vue-cli-service build --target lib --name jpAddressComponent ./src/components/FormAddress.vue",
     "test:unit": "vue-cli-service test:unit --watch",

@@ -41,7 +41,7 @@ export default {
    * 
    * TODO: unit test - ok
    * TODO: Django Template
-   */ 
+   */
   props: {
     customContainerClass : String,
     customInputWrapperClass : String
