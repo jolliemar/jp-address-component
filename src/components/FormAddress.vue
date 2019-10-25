@@ -2,27 +2,27 @@
   <div :class="[ customContainerClass ? customContainerClass : 'default-container' ]">
     <div :class="[ customInputWrapperClass ? customInputWrapperClass : 'default-input-wrapper' ]">
       <label>郵便番号</label>
-      <input type="text" placeholder="〒 000-0000" v-model.lazy="address.postalCode"/>
+      <input type="text" placeholder="〒 000-0000" name="postal-code" v-model.lazy="address.postalCode"/>
     </div>
 
     <div :class="[ customInputWrapperClass ? customInputWrapperClass : 'default-input-wrapper' ]">
       <label>都道府県名</label>
-      <input type="text" placeholder="都道府県名" v-model="address.prefecture"/>
+      <input type="text" placeholder="都道府県名" name="prefecture" v-model="address.prefecture"/>
     </div>
 
     <div :class="[ customInputWrapperClass ? customInputWrapperClass : 'default-input-wrapper' ]">
       <label>市町村区</label>
-      <input type="text" placeholder="市町村区" v-model="address.city"/>
+      <input type="text" placeholder="市町村区" name="city" v-model="address.city"/>
     </div>
 
     <div :class="[ customInputWrapperClass ? customInputWrapperClass : 'default-input-wrapper' ]">
       <label>町域</label>
-      <input type="text" placeholder="丁目 番地 号" v-model="address.area"/>
+      <input type="text" placeholder="丁目 番地 号" name="area" v-model="address.area"/>
     </div>
 
     <div :class="[ customInputWrapperClass ? customInputWrapperClass : 'default-input-wrapper' ]">
       <label>以降の住所</label>
-      <input type="text" placeholder="以降の住所" v-model="address.extension"/>
+      <input type="text" placeholder="以降の住所" name="extension" v-model="address.extension"/>
     </div>
   </div>
 </template>
@@ -37,9 +37,9 @@ export default {
    * TODO: decide json format
    * TODO: params - ok
    * TODO: emit - ok
+   * TODO: build - ok
    * 
-   * TODO: unit test
-   * TODO: build
+   * TODO: unit test - ok
    * TODO: Django Template
    */ 
   props: {
@@ -66,27 +66,17 @@ export default {
   watch : {
     'address.postalCode' : function (newValue) {
       let postalCode = newValue.replace("-", "");
-      let address = jpAddress[postalCode];
-      if(address) {
-        this.address = {
-          postalCode: newValue,
-          prefecture : address[1],
-          city : address[2],
-          area : address[3],
-          extension : address[4],
-        }
-
-        this.$emit('on-update-address', this.address);
-      } else {
-        this.address = {
-          postalCode: newValue,
-        };
+      let address = jpAddress[postalCode] || [];
+      this.address = {
+        postalCode: newValue,
+        prefecture : address[1] || "",
+        city : address[2] || "",
+        area : address[3] || "",
+        extension : address[4] || "",
       }
+
+      this.$emit('on-update-address', this.address);
     }
-  },
-
-  methods : {
-
   }
 }
 </script>
