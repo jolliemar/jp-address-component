@@ -35,8 +35,9 @@ export default {
    * params: class, data
    * 
    * TODO: decide json format
-   * TODO: params - ok:test
-   * TODO: emit - ok:test
+   * TODO: params - ok
+   * TODO: emit - ok
+   * 
    * TODO: unit test
    * TODO: build
    * TODO: Django Template
@@ -75,7 +76,7 @@ export default {
           extension : address[4],
         }
 
-        this.$emit('japanAddress', this.address);
+        this.$emit('on-update-address', this.address);
       } else {
         this.address = {
           postalCode: newValue,
