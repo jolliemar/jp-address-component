@@ -1,28 +1,23 @@
-# my-address-lib
+# jp-address-component
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads address component for development
 ```
-npm run serve
+npm run serve:component
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies address component
 ```
-npm run build
+npm run build-bundle
 ```
 
 ### Run your unit tests
 ```
 npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
